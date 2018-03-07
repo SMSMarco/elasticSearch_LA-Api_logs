@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Load Daily LA-API logs to Elastic Search",
   "main": "input.js",
-  "scripts": {
-    "start": "start_elastic_kibana.sh"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/SMSMarco/elasticSearch_LA-Api_logs.git"
@@ -19,5 +16,8 @@
   "dependencies": {
     "minimist": "~1.2.0",
     "yargs": "~11.0.0"
+  },
+  "scripts": {
+    "start": "start_elastic_kibana.sh"
   }
 }
