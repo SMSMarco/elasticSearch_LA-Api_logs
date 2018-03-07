@@ -21,7 +21,6 @@ You need to have a recent version of Java installed. See the [Setup](https://www
 
 ## 3. Usage
 
-### Getting started
   * Clone this repo
   * Run npm install
   * Run bin/elasticsearch on unix, or bin\elasticsearch.bat on windows.
