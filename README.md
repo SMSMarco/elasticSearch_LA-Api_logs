@@ -10,11 +10,11 @@ You need to have a recent version of Java installed. See the [Setup](https://www
 
 ## 2. Installation
 
-### 2.1 Elastic Search
+#### 2.1 Elastic Search
 
 * [Download](https://www.elastic.co/downloads/elasticsearch) and unzip the Elasticsearch official distribution.
 
-### 2.2 Kibana
+#### 2.2 Kibana
 
 * [Download](https://www.elastic.co/downloads/kibana) and unzip the Kibana official distribution.
 
