@@ -1,0 +1,23 @@
+{
+  "name": "elasticSearch_LA-API_logs",
+  "version": "1.0.0",
+  "description": "Load Daily LA-API logs to Elastic Search",
+  "main": "input.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SMSMarco/elasticSearch_LA-Api_logs.git"
+  },
+  "author": "Marco Ortiz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SMSMarco/elasticSearch_LA-Api_logs/issues"
+  },
+  "homepage": "https://github.com/SMSMarco/elasticSearch_LA-Api_logs",
+  "dependencies": {
+    "minimist": "~1.2.0",
+    "yargs": "~11.0.0"
+  }
+}
