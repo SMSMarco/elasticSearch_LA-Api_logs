@@ -50,12 +50,12 @@ If you want to load logs from a remote server, download the `.log` file to a loc
 ## 2. Add Metadata to Daily Logs
 In order to load log data in bulk into elasticsearch, you must first tell elasticsearch where to load the data in the files.  This is done by including a header row before each row to upload which communicates this information to elasticsearch.
 
-### 2.1 Process flow:
+* Process flow:
 ```
   input.js --> esUpload.sh --> applyHeaders.js --> ElasticSearch server
 ```  
 
-Example header row:
+* Example header row:
 ```json
 {"_index":"LA-API_Daily_Logs-2017.09.01","_type":"api_log", "_id":"1"}
 ```
@@ -67,7 +67,7 @@ Fields:
 
 Use the `input.js` node file to process a log and apply the appropiate header records for each logged row.
 
-### applyHeaders.js
+#### applyHeaders.js
 
 1. Processes the log file(s) to resolve/replace any data that will cause problems when trying to import into elasticsearch
 
@@ -139,7 +139,4 @@ Examples:
 
   NOTE: ElasticSearch names for indexPrefix and logType should be in lower case
 
-
-for more information, find the documentation at
-https://github.com/SMSMarco/elasticSearch_LA-Api_logs/blob/master/README.md
 ```
