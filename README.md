@@ -1,4 +1,33 @@
-# Elastic Search Setup
+# LA-API logs to Elastic Search
+
+Simple utility that reads LA-API daily logs, converts them into Elastic Search format and Bulk Upload them to the Elastic Search server. The logs can be manage through the Kibana console with the option of creating visualization graphics that can be integrated in a Dashboard interface.
+
+# Software Setup
+
+## 1. Requirements
+
+You need to have a recent version of Java installed. See the [Setup](https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html#jvm-version) page for more information.
+
+## 2. Installation
+
+### 2.1 Elastic Search
+
+* [Download](https://www.elastic.co/downloads/elasticsearch) and unzip the Elasticsearch official distribution.
+
+### 2.2 Kibana
+
+* [Download](https://www.elastic.co/downloads/kibana) and unzip the Kibana official distribution.
+
+
+## 3. Usage
+
+### Getting started
+  * Clone this repo
+  * Run npm install
+  * Run bin/elasticsearch on unix, or bin\elasticsearch.bat on windows.
+  * Run bin/kibana on unix, or bin\kibana.bat on windows.
+  * Go to the [Help](#help-menu) menu usage section to learn more about running the app with command line arguments
+
 
 # Steps to Upload Daily LA-API logs to Elastic Search
 
@@ -86,7 +115,7 @@ Using Postman or the Kibana interface, perform a call against the `api_log` inde
 GET YOUR_SERVER:YOUR_PORT/_cat/indices/api_log*
 ```
 
-## 5. Usage
+# Help Menu
 
 ```bash
 $ node input -h
