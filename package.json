@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Load Daily LA-API logs to Elastic Search",
   "main": "input.js",
-  "scripts": {
-    "start": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/SMSMarco/elasticSearch_LA-Api_logs.git"
