@@ -4,7 +4,7 @@
   "description": "Load Daily LA-API logs to Elastic Search",
   "main": "input.js",
   "scripts": {
-    "start": "./start_elastic_kibana.sh"
+    "start": "start_elastic_kibana.sh"
   },
   "repository": {
     "type": "git",
