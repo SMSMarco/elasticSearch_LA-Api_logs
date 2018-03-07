@@ -141,5 +141,5 @@ Examples:
 
 
 for more information, find the documentation at
-https://github.com/seniormarketsales/LA-ElasticSearch/blob/master/readme.md
+https://github.com/SMSMarco/elasticSearch_LA-Api_logs/blob/master/README.md
 ```
