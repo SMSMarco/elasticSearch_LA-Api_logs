@@ -115,7 +115,7 @@ Using Postman or the Kibana interface, perform a call against the `api_log` inde
 GET YOUR_SERVER:YOUR_PORT/_cat/indices/api_log*
 ```
 
-# Help Menu
+## Help Menu
 
 ```bash
 $ node input -h
