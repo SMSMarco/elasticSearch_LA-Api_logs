@@ -4,7 +4,7 @@
   "description": "Load Daily LA-API logs to Elastic Search",
   "main": "input.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "./start_elastic_kibana.sh"
   },
   "repository": {
     "type": "git",
