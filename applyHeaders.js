@@ -2,7 +2,7 @@
 // Date:   02.13.2018
 //**********************************************************************************************
 
-// minimist setup ***************************************/
+// required node modules **********************/
 var minimist = require('minimist');
 
 // Set default values for options passed in via CLI
@@ -10,16 +10,18 @@ var knownOptions = {
   string: ['fileName'],
   default: { 
               'indexPrefix': 'api_log_',
-              'logType': 'api_log'
+              'logType': 'api_log',
+              'file_counter': file_counter
            }
 };
 
 // Parse CLI arguments and store in "options" object
 var options = minimist(process.argv.slice(2), knownOptions);
 
-var fileName = options.fileName,
- indexPrefix = options.indexPrefix,
- logType     = options.logType;
+var fileName  = options.fileName,
+ indexPrefix  = options.indexPrefix,
+ logType      = options.logType,
+ file_counter = options.file_counter;
 
 //**********************************************************************************************
 
@@ -29,14 +31,15 @@ var fs = require('fs'),                 // used to read files from filesystem
 
 // Defaults
 var filePath = fileName,
-    count = 0,
+    rec_counter = 0,
     header = "",
     objJSONLine,
     line,
     rd;
 
 // Capture date stamp as YYYY.MM.DD
-myIndexName = indexPrefix + filePath.match(/\d{4}-\d{2}-\d{2}/g)[0].replace(/\-/g,".");
+var myIndexName = indexPrefix + filePath.match(/\d{4}-\d{2}-\d{2}/g)[0].replace(/\-/g,".");
+var myIndexName = myIndexName + '.' + file_counter;
 
 // Create incoming file stream with raw log data to process
 rd = readline.createInterface({
@@ -46,10 +49,10 @@ rd = readline.createInterface({
 
 // Process log file line-by-line
 rd.on('line', function(line) {
-    count++;
+    rec_counter++;
 
     // Create header text
-    header = JSON.stringify({ "index":{"_index":myIndexName,"_type":logType, "_id": count } });
+    header = JSON.stringify({ "index":{"_index":myIndexName,"_type":logType, "_id":rec_counter } });
 
     // *********** Transform Invalid Data/Structures into ElasticSearch Friendly Format ********************
      
