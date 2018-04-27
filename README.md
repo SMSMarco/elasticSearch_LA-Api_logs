@@ -47,9 +47,9 @@ Options:
 
 Examples:
 
-  1. node input --f C:/LA-API-logs/dailyLogs/2018/01-Jan
+  1. node input --f C:/LA-API-logs/dailyLogs/2017/09-Sep
 
-  2. node input --f C:/LA-API-logs/dailyLogs/2018/01-Jan --i myindex_ --t mylog
+  2. node input --f C:/LA-API-logs/dailyLogs/2017/09-Sep --i myindex_ --t mylog
 
   NOTE: ElasticSearch names for indexPrefix and logType should be in lower case
 
