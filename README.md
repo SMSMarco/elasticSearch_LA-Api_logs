@@ -92,7 +92,7 @@ In order to load log data in bulk into elasticsearch, you must first tell elasti
 
 * Process flow:
 ```
-  input.js --> esUpload.sh --> applyHeaders.js --> ElasticSearch server
+  input.js --> applyHeaders.js --> esUpload.sh  --> ElasticSearch server
 ```  
 
 * Example of index header row:
@@ -105,7 +105,7 @@ Fields:
 * _id - **UNIQUE** id for the record - must be unique within a given elasticsearch index
 
 
-Use the `input.js` node file to process a log and apply the appropiate header records for each logged row.
+Use the `applyHeaders.js` file to process a log and apply the appropiate header records for each logged row.
 
 1. Processes the log file(s) to resolve/replace any data that will cause problems when trying to import into elasticsearch
 
@@ -140,6 +140,8 @@ Once the logs have been processed and appropriate header records created, you wi
 
 example:
 ```bash
+# esUpload.sh
+
 # process raw file into version that includes headers
 node input.js PATH_TO_RAW_LOG_FILE.log > PATH_TO_PROCESSED_FILE_WITH_HEADERS.log
 
