@@ -27,6 +27,41 @@ Kibana
   * Run bin/kibana on unix, or bin\kibana.bat on windows.
   * Go to the [Help](#help-menu) menu usage section to learn more about running the app with command line arguments
 
+### Help Menu
+
+```bash
+$ node input -h
+
+Usage: input -f [input JSON file] -i [Elasticsearch index to write to] -t
+[Elasticsearch type to write]
+
+Options:
+
+  --version          Show version number                               [boolean]
+  -f, --filePath     Path to input JSON file                          [required]
+  -i, --indexPrefix  Elasticsearch index prefix            [default: "api_log_"]
+  -t, --logType      Elasticsearch type name                [default: "api_log"]
+  -h, --help         Show help                                         [boolean]
+
+
+Examples:
+
+  1. node input --f C:/LA-API-logs/dailyLogs/2018/01-Jan
+
+  2. node input --f C:/LA-API-logs/dailyLogs/2018/01-Jan --i myindex_ --t mylog
+
+  NOTE: ElasticSearch names for indexPrefix and logType should be in lower case
+
+```
+
+## 4. Check to make sure data was imported correctly
+Using Postman or the Kibana interface, perform a call against the `api_log` index pattern to verify that upload was successful
+
+### Kibana
+![kibana_la-api-logs-sept-2017](https://user-images.githubusercontent.com/35241357/39373585-07ccaa96-4a16-11e8-9e38-c5da53125292.png)
+
+### Postman
+![postman_la-api-logs-sept-2017](https://user-images.githubusercontent.com/35241357/39373640-3800b5ae-4a16-11e8-9b73-feca880dfd85.png)
 
 # Steps to Upload Daily LA-API logs to Elastic Search
 
@@ -47,7 +82,7 @@ dailyLogs
 
 If you want to load logs from a remote server, download the `.log` file to a local directory on your machine.
 
-## 2. Add Metadata to Daily Logs
+## 2. Indexing by adding Metadata to Daily Logs
 In order to load log data in bulk into elasticsearch, you must first tell elasticsearch where to load the data in the files.  This is done by including a header row before each row to upload which communicates this information to elasticsearch.
 
 * Process flow:
@@ -55,7 +90,7 @@ In order to load log data in bulk into elasticsearch, you must first tell elasti
   input.js --> esUpload.sh --> applyHeaders.js --> ElasticSearch server
 ```  
 
-* Example header row:
+* Example of index header row:
 ```json
 {"_index":"LA-API_Daily_Logs-2017.09.01","_type":"api_log", "_id":"1"}
 ```
@@ -106,37 +141,5 @@ curl -H 'Content-Type: application/x-ndjson' -XPOST 'YOUR_SERVER:YOUR_PORT/_bulk
 
 ```
 
-## 4. Check to make sure data was imported correctly
-Using Postman or the Kibana interface, perform a call against the `api_log` index pattern to verify that upload was successful
-
-```bash
-# You do not need to include server/port for Kibana console
-GET YOUR_SERVER:YOUR_PORT/_cat/indices/api_log*
-```
-
-## Help Menu
-
-```bash
-$ node input -h
-
-Usage: input -f [input JSON file] -i [Elasticsearch index to write to] -t
-[Elasticsearch type to write]
-
-Options:
-
-  --version          Show version number                               [boolean]
-  -f, --filePath     Path to input JSON file                          [required]
-  -i, --indexPrefix  Elasticsearch index prefix            [default: "api_log_"]
-  -t, --logType      Elasticsearch type name                [default: "api_log"]
-  -h, --help         Show help                                         [boolean]
 
 
-Examples:
-
-  1. node input --f C:/LA-API-logs/dailyLogs/2018/01-Jan
-
-  2. node input --f C:/LA-API-logs/dailyLogs/2018/01-Jan --i myindex_ --t mylog
-
-  NOTE: ElasticSearch names for indexPrefix and logType should be in lower case
-
-```
