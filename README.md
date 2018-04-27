@@ -132,6 +132,8 @@ rd.on('line', function(line) {
 });
 ```
 
+![la-api-logs_before_after](https://user-images.githubusercontent.com/35241357/39375554-bb9c3af4-4a1c-11e8-9290-bfa73fdca678.png)
+
 ## 3. Load: Upload logs to Elastic Search
 
 Once the logs have been processed and appropriate header records created, you will need to run statements like the ones in `esUpload.sh` file in order to upload the data into elastic search
