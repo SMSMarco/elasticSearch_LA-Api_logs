@@ -87,7 +87,7 @@ dailyLogs
 If you want to load logs from a remote server, download the `.log` file to a local directory on your machine.
 
 
-## 2. Transform: Indexing by adding Metadata to Daily Logs
+## 2. Transform: Indexing by adding Metadata Header to daily Logs
 In order to load log data in bulk into elasticsearch, you must first tell elasticsearch where to load the data in the files.  This is done by including a header row before each row to upload which communicates this information to elasticsearch.
 
 * Process flow:
