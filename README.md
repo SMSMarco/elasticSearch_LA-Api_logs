@@ -18,7 +18,6 @@ Kibana
 
 * [Download](https://www.elastic.co/downloads/kibana) and unzip the Kibana official distribution.
 
-
 ## 3. Usage
 
   * Clone this repo
@@ -65,9 +64,12 @@ Using Postman or the Kibana interface, perform a call against the `api_log` inde
 ### Postman
 ![postman_la-api-logs-sept-2017](https://user-images.githubusercontent.com/35241357/39373640-3800b5ae-4a16-11e8-9b73-feca880dfd85.png)
 
-# Steps to Upload Daily LA-API logs to Elastic Search
 
-## 1. Default Log Files Location
+# Extract, Transform, Load
+## Steps followed to ETL daily LA-API logs to Elastic Search
+
+
+## 1. Extract: Default Log Files Location
 Daily log files are written using the [jsonl](http://jsonlines.org/) format - each line on the file represents a fully valid JSON object.
 
 Daily log files are placed in the location specified by `settings.fileLogPath` in the coldbox.cfc (e.g. C:\LA-API-logs\dailyLogs)
@@ -84,7 +86,8 @@ dailyLogs
 
 If you want to load logs from a remote server, download the `.log` file to a local directory on your machine.
 
-## 2. Indexing by adding Metadata to Daily Logs
+
+## 2. Transform: Indexing by adding Metadata to Daily Logs
 In order to load log data in bulk into elasticsearch, you must first tell elasticsearch where to load the data in the files.  This is done by including a header row before each row to upload which communicates this information to elasticsearch.
 
 * Process flow:
@@ -104,11 +107,11 @@ Fields:
 
 Use the `input.js` node file to process a log and apply the appropiate header records for each logged row.
 
-#### applyHeaders.js
-
 1. Processes the log file(s) to resolve/replace any data that will cause problems when trying to import into elasticsearch
 
 ```javascript
+// applyHeaders.js
+
 // Process log file line-by-line
 rd.on('line', function(line) {
     count++;
@@ -129,7 +132,7 @@ rd.on('line', function(line) {
 });
 ```
 
-## 3. Upload logs to Elastic Search
+## 3. Load: Upload logs to Elastic Search
 
 Once the logs have been processed and appropriate header records created, you will need to run statements like the ones in `esUpload.sh` file in order to upload the data into elastic search
 
