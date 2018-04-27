@@ -30,6 +30,8 @@ Kibana
 ### Help Menu
 
 ```bash
+
+Call the help menu in command line interface:
 $ node input -h
 
 Usage: input -f [input JSON file] -i [Elasticsearch index to write to] -t
